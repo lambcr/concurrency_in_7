@@ -4,18 +4,13 @@ defmodule Week_2.Day_1 do
     0
   end
 
-  def recursive_sum_example_1(numbers) do
-    list = Enum.to_list(numbers)
-    List.first(list) + List.delete(list, List.first(list)) |> recursive_sum_example_1
+  def recursive_sum_example_1(numbers_range) do
+    list = Enum.to_list(numbers_range)
+    List.first(list) + recursive_sum_example_1(List.delete(list, List.first(list)))
   end
 
-  def recursive_sum_example_2(numbers) do
-    Enum.to_list(numbers)
-    |> List.foldl(0, fn (x, acc) -> x + acc end)
-  end
-
-  def sum(list) do
-
+  def reduce_sum(numbers_range) do
+    Enum.to_list(numbers_range) |> List.foldl(0, fn (x, acc) -> x + acc end)
   end
 
   def get_words(text) do
